@@ -18,7 +18,7 @@ enum APNSError: Error {
         switch self {
         case .invalidURL: return "Invalid URL"
         case let .apiError(error): return "API error \(error.localizedDescription)"
-        case let .invalidResponse(response): return "Invalid response \(response)"
+        case let .invalidResponse(response): return "Invalid response \(String(describing: response))"
         case let .invalidRequest(error): return "Invalid reqyest \(error)"
         }
     }

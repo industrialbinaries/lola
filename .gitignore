@@ -1,9 +1,5 @@
-*.xcuserstate
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
 xcuserdata/
-Carthage/Checkouts
-build
-.bundle/
-/Builds/
-/Gems/
-fastlane/test_output
-fastlane/README.md

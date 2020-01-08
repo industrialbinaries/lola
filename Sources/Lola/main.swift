@@ -1,26 +1,28 @@
-//
-//  main.swift
-//  Lola
-//
-//  Created by Jan Timar on 1/7/20.
-//  Copyright © 2020 Jan Timar. All rights reserved.
-//
-
 import Foundation
 
 /**
- For test call in terminal:
+ For test from terminal use:
  
 ./Lola  \
 -bundleId cz.industrial-binaries.LolaTestApp  \
 -device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
--token eyJhbGciOiJFUzI1NiIsImtpZCI6IkpQOFo3WFhLRDkifQ.eyJpc3MiOiI5UTY5MjI3NDJZIiwiaWF0IjoxNTc4NDg5MzI2LCJleHAiOjE1Nzg0OTI5MjZ9.VShnXm5insacy9gLrHaxIn_Sh3l1Z0gqWxCXuNZ9PExcJrhY46YHZfTSYrBRBsSCNCubPHEMXSwzyW4S64SsEg  \
+-teamId 9Q6922742Y \
+-authKey AuthKey_JP8Z7XXKD9.p8  \
 -json  "{ \"aps\": {\"alert\": \"Test\", \"sound\": \"default\" }}"
  */
 
 // Parse commend arguments
 let commands = CommandLine.commands
-print("COMMANDS \(commands)")
+
+guard let authKey = commands["-authKey"] else {
+    print("Missing required argument `-authKey` please use format of full name of your file f.e. `AuthKey_JP8Z7XXKD9.p8`")
+    exit(-1)
+}
+
+guard let teamId = commands["-teamId"] else {
+    print("Missing required argument `-teamId`")
+    exit(-1)
+}
 
 guard let deviceToken = commands["-device"] else {
     print("Missing required argument `-device`")
@@ -32,10 +34,12 @@ guard let bundleId = commands["-bundleId"] else {
     exit(-1)
 }
 
-guard let authorizationToken = commands["-token"] else {
-    print("Missing required argument `-token`")
-    exit(-1)
-}
+// Create token from p8 file
+let parser = try P8Parser(
+    p8: authKey,
+    teamID: teamId
+)
+let authorizationToken = try parser.generateToken()
 
 // Setup app configuration
 let configuration = AppConfiguration(
