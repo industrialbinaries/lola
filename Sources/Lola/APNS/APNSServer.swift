@@ -11,7 +11,7 @@ import Foundation
 enum APNSServer {
     case production
     case development
-    
+
     /// URL for send push notification
     /// - Parameter deviceToke: Token for device where will send notification, you can get this token when your app register for remote push notification for more information check https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application
     func url(for deviceToke: String) throws -> URL {
