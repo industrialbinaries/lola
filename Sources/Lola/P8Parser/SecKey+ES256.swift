@@ -1,9 +1,9 @@
 //
 //  SecKey+ES256.swift
-//  Lola
+//  CupertinoJWT
 //
-//  Created by Jan Timar on 1/8/20.
-//  Copyright © 2020 Jan Timar. All rights reserved.
+//  Created by Ethanhuang on 2018/8/23.
+//  Copyright © 2018年 Elaborapp Co., Ltd. All rights reserved.
 //
 
 import Foundation
