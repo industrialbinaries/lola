@@ -9,7 +9,7 @@
 import Foundation
 
 /// APNS services for send push notification
-final class APNService {
+struct APNService {
     
     // MARK: - Private properties
     private let configuration: AppConfiguration
