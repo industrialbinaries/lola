@@ -9,15 +9,20 @@ let package = Package(
         .macOS(.v10_12),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: "https://github.com/ethanhuang13/CupertinoJWT", from: "0.2.1"), // Currently not support SPM
+        .package(
+            url: "https://github.com/terwanerik/CupertinoJWT",
+            from: "0.2.2"
+        ),
     ],
     targets: [
         .target(
             name: "Lola",
-            dependencies: ["LolaCore"]
+            dependencies: ["LolaCore", "CupertinoJWT"]
         ),
-        .target(name: "LolaCore"),
+        .target(
+            name: "LolaCore",
+            dependencies: ["CupertinoJWT"]
+        ),
         .testTarget(
             name: "LolaTests",
             dependencies: ["Lola"]
