@@ -25,8 +25,8 @@ struct APNService {
     }
     
     // MARK: - APNS service public properties
-    
-    /// Send `payload` to APNS server
+
+    /// Send `payload` to APNs server
     /// - Parameters:
     ///   - payload: JSON for APNs for more information check https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification
     ///   - type: Define type of notification - for more information check `PushNotificationType`
@@ -63,7 +63,19 @@ struct APNService {
             completion(.success(httpResponse))
         }
     }
-    
+
+    /// Send `message` in default alert to APNs server
+    /// - Parameters:
+    ///   - message: Simple string for APNs
+    ///   - completion: Completion of request result
+    func send(
+        message: String,
+        completion: @escaping (Result<URLResponse, APNSError>) -> Void
+    ) -> URLSessionDataTask? {
+        let payload = "{ \"aps\": {\"alert\": \"\(message)\", \"sound\": \"default\" }}"
+        return send(payload: payload, completion: completion)
+    }
+
     /// Prepare `POST` request with headhers for APNs
     /// - Parameters:
     ///   - data: Valid JSON string to request body
