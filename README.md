@@ -25,7 +25,18 @@ For example:
 -device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
 -teamId 9Q6922742Y \
 -authKey AuthKey_JP8Z7XXKD9.p8  \
--json  "{ \"aps\": {\"alert\": \"Test\", \"sound\": \"default\" }}"
+-json  "{ \"aps\": {\"alert\": \"Industrial-Binaries 👋\", \"sound\": \"default\" }}"
+```
+
+`message` - Text which will be used in in simple alert
+For example:
+```
+./Lola  \
+-bundleId cz.industrial-binaries.LolaTestApp  \
+-device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
+-teamId 9Q6922742Y \
+-authKey AuthKey_JP8Z7XXKD9.p8  \
+-message  "Industrial-Binaries 👋"
 ```
 
 ### Parse P8

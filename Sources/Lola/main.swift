@@ -8,7 +8,7 @@ import Foundation
 -device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
 -teamId 9Q6922742Y \
 -authKey AuthKey_JP8Z7XXKD9.p8  \
--json  "{ \"aps\": {\"alert\": \"Test\", \"sound\": \"default\" }}"
+-json  "{ \"aps\": {\"alert\": \"Industrial-Binaries 👋\", \"sound\": \"default\" }}"
  */
 
 // Parse commend arguments
@@ -20,7 +20,7 @@ guard let authKey = commands["-authKey"] else {
 }
 
 guard let teamId = commands["-teamId"] else {
-    print("Missing required argument `-teamId`")
+    print("Missing required argument `-teamId` you can find it in your account on Apple developer portal -> `Membership` -> `Team ID`")
     exit(-1)
 }
 
@@ -52,19 +52,30 @@ let configuration = AppConfiguration(
 let service = APNService(configuration: configuration)
 
 let dispatchGroup = DispatchGroup()
+
+let completion = { (result: Result<URLResponse, APNSError>) in
+    switch result {
+    case .success:
+        print("Notification sent successfully 🎉")
+    case let .failure(error):
+        print("Error: \(error.localizedDescription)")
+    }
+    
+    dispatchGroup.leave()
+}
+
 // Send message
-if let payload = (commands["-message"] ?? commands["-json"]) {
-    dispatchGroup.enter()
-    service.send(payload: payload) { result in
-        switch result {
-        case .success:
-            print("Notification sent successfully 🎉")
-        case let .failure(error):
-            print("Error: \(error.localizedDescription)")
-        }
-        
-        dispatchGroup.leave()
-    }?.resume()
+dispatchGroup.enter()
+if let message = commands["-message"] {
+    service.send(
+        message: message,
+        completion: completion
+        )?.resume()
+} else if let payload = commands["-json"] {
+    service.send(
+        payload: payload,
+        completion: completion
+        )?.resume()
 } else {
     print("Missing required argument `-message` or `-json`")
     exit(-1)
