@@ -8,7 +8,7 @@ import Foundation
 -device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
 -teamId 9Q6922742Y \
 -authKey AuthKey_JP8Z7XXKD9.p8  \
--json  "{ \"aps\": {\"alert\": \"Industrial-Binaries 👋\", \"sound\": \"default\" }}"
+-json "{ \"aps\": {\"alert\": \"Hi from Lola 👋\", \"sound\": \"default\" }}"
  */
 
 // Parse commend arguments
@@ -72,8 +72,16 @@ if let message = commands["-message"] {
         completion: completion
         )?.resume()
 } else if let payload = commands["-json"] {
+    var type: PushNotificationType = .alert
+    
+    if let typeRawValue = commands["-notificationType"],
+        let notificationType = PushNotificationType(rawValue: typeRawValue) {
+        type = notificationType
+    }
+    
     service.send(
         payload: payload,
+        type: type,
         completion: completion
         )?.resume()
 } else {
