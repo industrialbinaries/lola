@@ -1,5 +1,4 @@
 //
-//  SecKey+ES256.swift
 //  CupertinoJWT
 //
 //  Created by Ethanhuang on 2018/8/23.

@@ -1,9 +1,8 @@
 //
-//  APNSError.swift
 //  Lola
 //
-//  Created by Jan Timar on 1/8/20.
-//  Copyright © 2020 Jan Timar. All rights reserved.
+//  Copyright (c) 2020 Industrial Binaries
+//  MIT license, see LICENSE file for details
 //
 
 import Foundation
