@@ -2,6 +2,8 @@
 
 Small helper library writed in `swift` for send push notification from terminal
 
+![Lola](lola-example.gif)
+
 ## Usage
 
 For send push notification from terminal with `Lola` you need set `mandatory` parameters

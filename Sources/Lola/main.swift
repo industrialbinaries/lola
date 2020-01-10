@@ -58,7 +58,7 @@ if let payload = (commands["-message"] ?? commands["-json"]) {
     service.send(payload: payload) { result in
         switch result {
         case .success:
-            print("Your message is on road 🤓")
+            print("Notification sent successfully 🎉")
         case let .failure(error):
             print("Error: \(error.localizedDescription)")
         }
