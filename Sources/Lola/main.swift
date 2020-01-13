@@ -3,12 +3,13 @@ import Foundation
 /**
  For test from terminal use:
  
-./Lola  \
--bundleId cz.industrial-binaries.LolaTestApp  \
--device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
--teamId 9Q6922742Y \
--authKey AuthKey_JP8Z7XXKD9.p8  \
--json "{ \"aps\": {\"alert\": \"Hi from Lola 👋\", \"sound\": \"default\" }}"
+ lola  \
+ -bundleId co.industrial-binaries.LolaTestApp  \
+ -device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
+ -teamId 9Q6922742Y \
+ -authKey AuthKey_JP8Z7XXKD9.p8  \
+ -notificationType alert \
+ -json "{ \"aps\": {\"alert\": \"Hi from lola 👋\", \"sound\": \"default\" }}" 
  */
 
 // Parse commend arguments
