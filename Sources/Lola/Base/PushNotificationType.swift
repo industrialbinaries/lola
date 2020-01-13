@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PushNotificationType: String {
+public enum PushNotificationType: String {
   /// Use the alert push type for notifications that trigger a user interaction—for example, an alert, badge, or sound. If you set this push type, the apns-topic header field must use your app’s bundle ID as the topic. For more information, see Generating a Remote Notification. The alert push type is required on watchOS 6 and later. It is recommended on macOS, iOS, tvOS, and iPadOS.
   case alert
   /// Use the background push type for notifications that deliver content in the background, and don’t trigger any user interactions. If you set this push type, the apns-topic header field must use your app’s bundle ID as the topic. For more information, see Pushing Background Updates to Your App. The background push type is required on watchOS 6 and later. It is recommended on macOS, iOS, tvOS, and iPadOS.

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum APNSServer {
+public enum APNSServer {
   case production
   case development
 

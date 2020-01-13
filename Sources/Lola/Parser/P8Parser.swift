@@ -9,7 +9,7 @@ import CupertinoJWT
 import Foundation
 
 /// Parser helper for parse P8 with `CupertinoJWT` https://github.com/ethanhuang13/CupertinoJWT
-struct P8Parser {
+public struct P8Parser {
   /// Private key from `p8`
   private let p8: String // contnet p8 file
   /// Apple Developer Team ID, you can find it in https://developer.apple.com/account/ -> `Membership` -> `Team ID`
@@ -21,7 +21,7 @@ struct P8Parser {
   /// - Parameters:
   ///   - file: Your key file name in current directory, should be in similar format to `AuthKey_JP8Z7XXKD9.p8``
   ///   - teamID: Apple Developer Team ID
-  init(
+  public init(
     p8 file: String,
     teamID: String
   ) throws {
@@ -42,7 +42,7 @@ struct P8Parser {
   }
 
   /// New token from `p8` file for `authorization bearer`, this token should be valid 60 minutes and then required refresh or create new token
-  func generateToken() throws -> String {
+  public func generateToken() throws -> String {
     let jwt = JWT(
       keyID: keyID,
       teamID: teamID,

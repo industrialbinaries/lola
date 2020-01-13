@@ -8,7 +8,7 @@
 import Foundation
 
 /// Wrapper for app configuration parameters required for send notification
-struct AppConfiguration {
+public struct AppConfiguration {
   /// Device token from https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application
   let deviceToken: String
   /// Authorization token form keys .p8 file, TODO: WIll be replaced with name of file

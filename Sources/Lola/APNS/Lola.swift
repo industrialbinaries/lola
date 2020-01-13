@@ -8,14 +8,14 @@
 import Foundation
 
 /// APNS services for send push notification
-struct APNService {
+public struct Lola {
   // MARK: - Private properties
 
   private let configuration: AppConfiguration
   private let server: APNSServer
   private let session: URLSession
 
-  init(
+  public init(
     configuration: AppConfiguration,
     server: APNSServer = .development
   ) {
@@ -31,7 +31,7 @@ struct APNService {
   ///   - payload: JSON for APNs for more information check https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification
   ///   - type: Define type of notification - for more information check `PushNotificationType`
   ///   - completion: Completion of request result
-  func send(
+  public func send(
     payload: String,
     type: PushNotificationType = .alert,
     completion: @escaping (Result<URLResponse, APNSError>) -> Void
@@ -68,7 +68,7 @@ struct APNService {
   /// - Parameters:
   ///   - message: Simple string for APNs
   ///   - completion: Completion of request result
-  func send(
+  public func send(
     message: String,
     completion: @escaping (Result<URLResponse, APNSError>) -> Void
   ) -> URLSessionDataTask? {
@@ -97,3 +97,4 @@ struct APNService {
     return request
   }
 }
+//Gihub workflows ymls
