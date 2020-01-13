@@ -1,8 +1,38 @@
-# Lola
+# lola
+
+[![SPM Compatible](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
+![Platforms: macOS+iOS+tvOS ](https://img.shields.io/badge/platforms-macOS%20iOS%20tvOS-brightgreen.svg?style=flat)
+[![Twitter](https://img.shields.io/badge/twitter-@i_binaries-blue.svg?style=flat)](https://twitter.com/i_binaries)
 
 Small helper library writed in `swift` for send push notification from terminal
 
 ![Lola](lola-example.gif)
+
+## Instalation
+
+`lola` is distribute with SPM, You can easly add it to other command line tool, iOS app or server-side apps.
+
+###  Swift package manager
+
+In your  `Package.swift` add new package depedencie: 
+```
+.package(
+    url: "https://github.com/industrialbinaries/lola",
+    from: "0.2.2"
+)
+```
+
+### Command line tools
+
+If you want run app in terminal you can easly clone repo:
+```
+$ git clone https://github.com/industrialbinaries/lola
+$ cd lola
+```
+And then install with Make:
+```
+$ make install
+```
 
 ## Usage
 
@@ -22,7 +52,7 @@ For send push notification from terminal with `lola` you need set `mandatory` pa
 
 For example:
 ```
-lola  \
+$ lola  \
 -bundleId co.industrial-binaries.LolaTestApp  \
 -device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
 -teamId 9Q6922742Y \
@@ -34,7 +64,7 @@ lola  \
 `message` - Text which will be used in in simple alert
 For example:
 ```
-lola  \
+$ lola  \
 -bundleId co.industrial-binaries.LolaTestApp  \
 -device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
 -teamId 9Q6922742Y \
@@ -47,3 +77,9 @@ Special thanks for [CupertinoJWT](https://github.com/ethanhuang13/CupertinoJWT) 
 
 ## Questions or feedback?
 Feel Free to contact us with any help or suggestion for improve this repository :)
+
+## License and Credits
+
+**lola** is released under the MIT license. See [LICENSE](/LICENSE) for details.
+
+Created by [Jan Timar](https://github.com/jantimar) @ [Industrial Binaries](https://industrial-binaries.co).
