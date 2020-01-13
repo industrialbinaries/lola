@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum APNSError: Error {
+public enum APNSError: Error {
   case invalidURL
   case apiError(Error)
   case invalidResponse(URLResponse?)
   case invalidRequest(Error)
 
-  var localizedDescription: String {
+  public var localizedDescription: String {
     switch self {
     case .invalidURL: return "Invalid URL"
     case let .apiError(error): return "API error \(error.localizedDescription)"

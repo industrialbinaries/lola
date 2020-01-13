@@ -12,16 +12,6 @@ Small helper library writed in `swift` for send push notification from terminal
 
 `lola` is distribute with SPM, You can easly add it to other command line tool, iOS app or server-side apps.
 
-###  Swift package manager
-
-In your  `Package.swift` add new package depedencie: 
-```
-.package(
-    url: "https://github.com/industrialbinaries/lola",
-    from: "0.1.0"
-)
-```
-
 ### Command line tools
 
 If you want run app in terminal you can easly clone repo:
@@ -34,7 +24,19 @@ And then install with Make:
 $ make install
 ```
 
+###  Swift package manager
+
+In your  `Package.swift` add new package depedencie: 
+```
+.package(
+    url: "https://github.com/industrialbinaries/lola",
+    from: "0.1.0"
+)
+```
+
 ## Usage
+
+### From terminal
 
 For send push notification from terminal with `lola` you need set `mandatory` parameters
 
@@ -70,6 +72,45 @@ $ lola  \
 -teamId 9Q6922742Y \
 -authKey AuthKey_JP8Z7XXKD9.p8  \
 -message "Hi from lola 👋"
+```
+
+### From SMP dependencies
+
+You create own instance of  `Lola`
+```
+let configuration = AppConfiguration(
+  deviceToken: /** Your app Push token **/,
+  authorizationToken: /** Token from your P8 key **/,
+  bundleId: /** Bundle-id of your app **/
+)
+
+let lola = Lola(configuration: configuration)
+```
+
+Hint: For get your authorization token you can use `P8Parser`
+
+```
+let parser = try P8Parser(
+  p8: /** Key of your P8 **/,
+  teamID: /** Team ID of your Apple Developer account **/
+)
+let authorizationToken = try parser.generateToken()
+```
+
+Ten with your `lola` instance can send notification
+```
+lola.send(
+  payload: /** Notification payload - JSON in string **/,
+  type: /** Notification type **/,
+  completion: /** Your completion block **/
+)?.resume()
+```
+od for simple message
+```
+lola.send(
+  message: /** Notification message - notification description **/,
+  completion: /** Your completion block **/
+)?.resume()
 ```
 
 ### Parse P8

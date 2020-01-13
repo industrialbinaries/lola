@@ -56,8 +56,8 @@ let configuration = AppConfiguration(
   bundleId: bundleId
 )
 
-// Setup services
-let service = APNService(configuration: configuration)
+// Setup lola
+let lola = Lola(configuration: configuration)
 
 let dispatchGroup = DispatchGroup()
 
@@ -75,7 +75,7 @@ let completion = { (result: Result<URLResponse, APNSError>) in
 // Send message
 dispatchGroup.enter()
 if let message = commands["-message"] {
-  service.send(
+  lola.send(
     message: message,
     completion: completion
   )?.resume()
@@ -87,7 +87,7 @@ if let message = commands["-message"] {
     type = notificationType
   }
 
-  service.send(
+  lola.send(
     payload: payload,
     type: type,
     completion: completion
