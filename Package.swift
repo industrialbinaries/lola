@@ -10,7 +10,7 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/terwanerik/CupertinoJWT",
+            url: "https://github.com/industrialbinaries/CupertinoJWT",
             from: "0.2.2"
         ),
     ],
