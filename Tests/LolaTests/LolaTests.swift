@@ -9,7 +9,7 @@ import class Foundation.Bundle
 import XCTest
 
 final class LolaTests: XCTestCase {
-  func testExample() throws { }
+  func testExample() throws {}
 
   /// Returns path to the built products directory.
   var productsDirectory: URL {

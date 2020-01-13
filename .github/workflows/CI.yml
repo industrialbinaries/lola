@@ -6,12 +6,14 @@ env:
   DEVELOPER_DIR: /Applications/Xcode_11.3.app/Contents/Developer
 
 jobs:
+
   ubuntu:
     runs-on: ubuntu-latest
-    name: ubuntu
+    container:
+     image: swift:5.1
     steps:
-      - uses: actions/checkout@v1
-      - run: swift build
+     - uses: actions/checkout@v1
+     - run: swift test
 
   macos:
     runs-on: macOS-latest
