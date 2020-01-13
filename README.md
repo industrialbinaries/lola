@@ -1,7 +1,7 @@
 # lola
 
 [![SPM Compatible](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
-![Platforms: macOS+iOS+tvOS ](https://img.shields.io/badge/platforms-macOS%20iOS%20tvOS-brightgreen.svg?style=flat)
+![Platforms: macOS](https://img.shields.io/badge/platforms-macOS%20iOS%20tvOS-brightgreen.svg?style=flat)
 [![Twitter](https://img.shields.io/badge/twitter-@i_binaries-blue.svg?style=flat)](https://twitter.com/i_binaries)
 
 Small helper library writed in `swift` for send push notification from terminal
@@ -18,7 +18,7 @@ In your  `Package.swift` add new package depedencie:
 ```
 .package(
     url: "https://github.com/industrialbinaries/lola",
-    from: "0.2.2"
+    from: "0.1.0"
 )
 ```
 
