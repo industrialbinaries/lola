@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Lola",
+    name: "lola",
     platforms: [
         .macOS(.v10_12),
     ],
@@ -16,7 +16,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Lola",
+            name: "lola",
             dependencies: ["LolaCore", "CupertinoJWT"]
         ),
         .target(
@@ -25,7 +25,7 @@ let package = Package(
         ),
         .testTarget(
             name: "LolaTests",
-            dependencies: ["Lola"]
+            dependencies: ["lola"]
         ),
     ]
 )

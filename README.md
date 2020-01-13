@@ -6,9 +6,9 @@ Small helper library writed in `swift` for send push notification from terminal
 
 ## Usage
 
-For send push notification from terminal with `Lola` you need set `mandatory` parameters
+For send push notification from terminal with `lola` you need set `mandatory` parameters
 
-`bundleId` - bundle ID of your app f.e. in my case `cz.industrial-binaries.LolaTestApp`
+`bundleId` - bundle ID of your app f.e. in my case `co.industrial-binaries.LolaTestApp`
 
 `device` - [device token](https://developer.apple.com/documentation/usernotifications/registering_your_app_with_apns) for your push notification
 
@@ -22,24 +22,24 @@ For send push notification from terminal with `Lola` you need set `mandatory` pa
 
 For example:
 ```
-./Lola  \
--bundleId cz.industrial-binaries.LolaTestApp  \
+lola  \
+-bundleId co.industrial-binaries.LolaTestApp  \
 -device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
 -teamId 9Q6922742Y \
 -authKey AuthKey_JP8Z7XXKD9.p8  \
 -notificationType alert \
--json "{ \"aps\": {\"alert\": \"Hi from Lola 👋\", \"sound\": \"default\" }}"
+-json "{ \"aps\": {\"alert\": \"Hi from lola 👋\", \"sound\": \"default\" }}"
 ```
 
 `message` - Text which will be used in in simple alert
 For example:
 ```
-./Lola  \
--bundleId cz.industrial-binaries.LolaTestApp  \
+lola  \
+-bundleId co.industrial-binaries.LolaTestApp  \
 -device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
 -teamId 9Q6922742Y \
 -authKey AuthKey_JP8Z7XXKD9.p8  \
--message "Hi from Lola 👋"
+-message "Hi from lola 👋"
 ```
 
 ### Parse P8

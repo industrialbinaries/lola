@@ -12,7 +12,7 @@ final class LolaTests: XCTestCase {
             return
         }
 
-        let fooBinary = productsDirectory.appendingPathComponent("Lola")
+        let fooBinary = productsDirectory.appendingPathComponent("lola")
 
         let process = Process()
         process.executableURL = fooBinary
