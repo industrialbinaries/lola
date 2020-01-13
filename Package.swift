@@ -4,9 +4,16 @@
 import PackageDescription
 
 let package = Package(
-  name: "lola",
+  name: "LolaCore",
   platforms: [
     .macOS(.v10_12),
+    .iOS(.v10),
+  ],
+  products: [
+    .library(
+      name: "LolaCore",
+      targets: ["LolaCore"]
+    ),
   ],
   dependencies: [
     .package(
@@ -17,7 +24,7 @@ let package = Package(
   targets: [
     .target(
       name: "lola",
-      dependencies: ["LolaCore", "CupertinoJWT"]
+      dependencies: ["LolaCore"]
     ),
     .target(
       name: "LolaCore",
@@ -25,7 +32,7 @@ let package = Package(
     ),
     .testTarget(
       name: "LolaTests",
-      dependencies: ["lola"]
+      dependencies: ["LolaCore"]
     ),
   ]
 )

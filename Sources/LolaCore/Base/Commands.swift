@@ -10,7 +10,7 @@ import Foundation
 extension CommandLine {
   /// Array of commands from `CommandLine.arguments`, keys with prefix ` -` and value is separete with ` `
   /// f.e. `-json "{ \"aps\": {\"alert\": \"Test\", \"sound\": \"default\" }}"`
-  static var commands: [String: String] {
+  public static var commands: [String: String] {
     var result = [String: String]()
 
     for index in 1 ..< arguments.count {
