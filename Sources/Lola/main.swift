@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LolaCore
 
 /**
  For test from terminal use:
