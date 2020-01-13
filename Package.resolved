@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "CupertinoJWT",
-        "repositoryURL": "https://github.com/terwanerik/CupertinoJWT",
+        "repositoryURL": "https://github.com/industrialbinaries/CupertinoJWT",
         "state": {
           "branch": null,
           "revision": "9da2dee3a013b26ae7c07f73217c6c6092f9bbe9",
