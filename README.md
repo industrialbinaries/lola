@@ -4,7 +4,7 @@
 ![Platforms: macOS+Linux](https://img.shields.io/badge/platforms-macOS%20iOS%20tvOS-brightgreen.svg?style=flat)
 [![Twitter](https://img.shields.io/badge/twitter-@i_binaries-blue.svg?style=flat)](https://twitter.com/i_binaries)
 
-Small helper library writed in `swift` for send push notification from terminal
+Small helper library written in `swift` for sending push notification from the terminal
 
 ![Lola](lola-example.gif)
 
@@ -38,9 +38,9 @@ In your  `Package.swift` add new package depedencie:
 
 ### From terminal
 
-For send push notification from terminal with `lola` you need set `mandatory` parameters
-
-`bundleId` - bundle ID of your app f.e. in my case `co.industrial-binaries.LolaTestApp`
+To send push notification from the terminal with `Lola` you need to set `mandatory` parameters:
+ 
+`bundleId` - bundle the ID of your app for example. in my case `co.industrial-binaries.LolaTestApp`
 
 `device` - [device token](https://developer.apple.com/documentation/usernotifications/registering_your_app_with_apns) for your push notification
 
@@ -112,12 +112,6 @@ lola.send(
   completion: /** Your completion block **/
 )?.resume()
 ```
-
-### Parse P8
-Special thanks for [CupertinoJWT](https://github.com/ethanhuang13/CupertinoJWT) for parse P8 keys
-
-## Questions or feedback?
-Feel Free to contact us with any help or suggestion for improve this repository :)
 
 ## License and Credits
 
