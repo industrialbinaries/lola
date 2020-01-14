@@ -4,17 +4,17 @@
 ![Platforms: macOS+Linux](https://img.shields.io/badge/platforms-macOS%20iOS%20tvOS-brightgreen.svg?style=flat)
 [![Twitter](https://img.shields.io/badge/twitter-@i_binaries-blue.svg?style=flat)](https://twitter.com/i_binaries)
 
-Small helper library written in `swift` for sending push notification from the terminal
+Small helper library is written in `swift` for sending push notification from the terminal
 
 ![Lola](lola-example.gif)
 
 ## Instalation
 
-`lola` is distribute with SPM, You can easly add it to other command line tool, iOS app or server-side apps.
+`lola` is distributed with SPM, You can easily add it to other command-line tools, iOS app or server-side apps.
 
-### Command line tools
+### Command-line tools
 
-If you want run app in terminal you can easly clone repo:
+If you want to run the app in the terminal you can easily clone the repo:
 ```
 $ git clone https://github.com/industrialbinaries/lola
 $ cd lola
@@ -50,7 +50,7 @@ To send push notification from the terminal with `Lola` you need to set `mandato
 
 `json` -  JSON [payload](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CreatingtheNotificationPayload.html) of your push notification 
 
-`notificationType` - Type of notification, this parameter is optional, when is not set payload will be send with default value `alert`. Can be one of 6 values `alert, background, voip, complication, fileprovider, mdm`
+`notificationType` - Type of notification, this parameter is optional, when is not set payload will be sent with default value `alert`. Can be one of 6 values `alert, background, VOIP, complication, fileprovider, mdm`
 
 For example:
 ```
@@ -87,7 +87,7 @@ let configuration = AppConfiguration(
 let lola = Lola(configuration: configuration)
 ```
 
-Hint: For get your authorization token you can use `P8Parser`
+Hint: To get your authorization token you can use `P8Parser`
 
 ```
 let parser = try P8Parser(
