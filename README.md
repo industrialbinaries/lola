@@ -14,13 +14,13 @@ A helper tool for sending push notifications from the terminal written in **Swif
 
 If you want to run **lola** in the terminal, clone the repo:
 
-```
+```bash
 $ git clone https://github.com/industrialbinaries/lola
 $ cd lola
 ```
 
 And then install it with Make:
-```
+```bash
 $ make install
 ```
 
@@ -28,7 +28,7 @@ $ make install
 
 `lola` is also distributed via SPM. You can use it as a framework in your `macOS` or `iOS` project. 
 In your `Package.swift` add a new package depedency: 
-```
+```swift
 .package(
     url: "https://github.com/industrialbinaries/lola",
     from: "0.1.0"
@@ -56,7 +56,7 @@ To send push notifications from the terminal with **lola** you need to use the f
 - `message` - The notification will be sent as an alert with the provided text. This is a convenient option instead of providigin the full `json` payload.
 
 #### Example usage (with `message`):
-```
+```bash
 $ lola  \
 -bundleId co.industrial-binaries.LolaTestApp  \
 -device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
@@ -80,7 +80,7 @@ $ lola  \
 
 1. Get the authorization token from your P8 file using `P8Parser`:
 
-```
+```swift
 let parser = try P8Parser(
   p8: /** Key of your P8 **/,
   teamID: /** Team ID of your Apple Developer account **/
@@ -90,7 +90,7 @@ let authorizationToken = try parser.generateToken()
 
 
 2. Create a new instance of  `Lola`:
-```
+```swift
 let configuration = AppConfiguration(
   deviceToken: /** Your app Push token **/,
   authorizationToken: /** Token from your P8 key **/,
@@ -101,7 +101,7 @@ let lola = Lola(configuration: configuration)
 ```
 
 3. Use `lola` to send notifications by providing a `JSON` payload:
-```
+```swift
 lola.send(
   payload: /** Notification payload - JSON in string **/,
   type: /** Notification type **/,
@@ -109,7 +109,7 @@ lola.send(
 )?.resume()
 ```
 ... or just a simple message:
-```
+```swift
 lola.send(
   message: /** Notification message - notification description **/,
   completion: /** Your completion block **/
