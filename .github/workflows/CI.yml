@@ -7,14 +7,6 @@ env:
 
 jobs:
 
-  ubuntu:
-    runs-on: ubuntu-latest
-    container:
-     image: swift:5.1
-    steps:
-     - uses: actions/checkout@v1
-     - run: swift build
-
   macos:
     runs-on: macOS-latest
     name: macOS
