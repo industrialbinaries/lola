@@ -1,32 +1,33 @@
 # lola
 
 [![SPM Compatible](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
-![Platforms: macOS+Linux](https://img.shields.io/badge/platforms-macOS%20iOS%20tvOS-brightgreen.svg?style=flat)
+![Platforms: macOS](https://img.shields.io/badge/platforms-macOS-brightgreen.svg?style=flat)
 [![Twitter](https://img.shields.io/badge/twitter-@i_binaries-blue.svg?style=flat)](https://twitter.com/i_binaries)
 
-Small helper library is written in `swift` for sending push notification from the terminal
+A helper tool for sending push notifications from the terminal written in **Swift**.
 
 ![Lola](lola-example.gif)
 
 ## Instalation
 
-`lola` is distributed with SPM, You can easily add it to other command-line tools, iOS app or server-side apps.
+### As a Command Line Tool
 
-### Command-line tools
+If you want to run **lola** in the terminal, clone the repo:
 
-If you want to run the app in the terminal you can easily clone the repo:
 ```
 $ git clone https://github.com/industrialbinaries/lola
 $ cd lola
 ```
-And then install with Make:
+
+And then install it with Make:
 ```
 $ make install
 ```
 
-###  Swift package manager
+###  As a Swift Package
 
-In your  `Package.swift` add new package depedencie: 
+`lola` is also distributed via SPM. You can use it as a framework in your `macOS` or `iOS` project. 
+In your `Package.swift` add a new package depedency: 
 ```
 .package(
     url: "https://github.com/industrialbinaries/lola",
@@ -36,35 +37,25 @@ In your  `Package.swift` add new package depedencie:
 
 ## Usage
 
-### From terminal
+### From Terminal
 
-To send push notification from the terminal with `Lola` you need to set `mandatory` parameters:
+To send push notifications from the terminal with **lola** you need to use the following parameters:
  
-`bundleId` - bundle the ID of your app for example. in my case `co.industrial-binaries.LolaTestApp`
+- `bundleId` - bundle the ID of your app
 
-`device` - [device token](https://developer.apple.com/documentation/usernotifications/registering_your_app_with_apns) for your push notification
+- `device` - [device token](https://developer.apple.com/documentation/usernotifications/registering_your_app_with_apns) or the device you want to send the notification to
 
-`teamId` - Apple Developer Team ID, you can find it in your [Account](https://developer.apple.com/account/) -> `Membership` -> `Team ID`
+- `teamId` - Apple Developer Team ID, you can find it in your [Account](https://developer.apple.com/account/) -> `Membership` -> `Team ID`
 
-`authKey` - Name of your `p8 file` created in [Apple Keys](https://developer.apple.com/account/resources/authkeys/list)
+- `authKey` - Name of your `p8 file` created in [Apple Keys](https://developer.apple.com/account/resources/authkeys/list)
 
-`json` -  JSON [payload](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CreatingtheNotificationPayload.html) of your push notification 
+- `notificationType` - This parameter is optional, when is not set payload will be sent with default value `alert`. Can be one of 6 values `alert, background, VOIP, complication, fileprovider, mdm`
 
-`notificationType` - Type of notification, this parameter is optional, when is not set payload will be sent with default value `alert`. Can be one of 6 values `alert, background, VOIP, complication, fileprovider, mdm`
+- `json` -  JSON [payload](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CreatingtheNotificationPayload.html) of your notification. Either `json` or `message` value has to be specified.
 
-For example:
-```
-$ lola  \
--bundleId co.industrial-binaries.LolaTestApp  \
--device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
--teamId 9Q6922742Y \
--authKey AuthKey_JP8Z7XXKD9.p8  \
--notificationType alert \
--json "{ \"aps\": {\"alert\": \"Hi from lola 👋\", \"sound\": \"default\" }}"
-```
+- `message` - The notification will be sent as an alert with the provided text. This is a convenient option instead of providigin the full `json` payload.
 
-`message` - Text which will be used in in simple alert
-For example:
+#### Example usage (with `message`):
 ```
 $ lola  \
 -bundleId co.industrial-binaries.LolaTestApp  \
@@ -74,9 +65,31 @@ $ lola  \
 -message "Hi from lola 👋"
 ```
 
-### From SMP dependencies
+#### Example usage (with `json`):
+```bash
+$ lola  \
+-bundleId co.industrial-binaries.LolaTestApp  \
+-device d9f1767bdbf0371f5efb25c7873f1942cf570ececde9896913ed9fdb33ac1c26  \
+-teamId 9Q6922742Y \
+-authKey AuthKey_JP8Z7XXKD9.p8  \
+-notificationType alert \
+-json "{ \"aps\": {\"alert\": \"Hi from lola 👋\", \"sound\": \"default\" }}"
+```
 
-You create own instance of  `Lola`
+### As a Framework
+
+1. Get the authorization token from your P8 file using `P8Parser`:
+
+```
+let parser = try P8Parser(
+  p8: /** Key of your P8 **/,
+  teamID: /** Team ID of your Apple Developer account **/
+)
+let authorizationToken = try parser.generateToken()
+```
+
+
+2. Create a new instance of  `Lola`:
 ```
 let configuration = AppConfiguration(
   deviceToken: /** Your app Push token **/,
@@ -87,17 +100,7 @@ let configuration = AppConfiguration(
 let lola = Lola(configuration: configuration)
 ```
 
-Hint: To get your authorization token you can use `P8Parser`
-
-```
-let parser = try P8Parser(
-  p8: /** Key of your P8 **/,
-  teamID: /** Team ID of your Apple Developer account **/
-)
-let authorizationToken = try parser.generateToken()
-```
-
-Ten with your `lola` instance can send notification
+3. Use `lola` to send notifications by providing a `JSON` payload:
 ```
 lola.send(
   payload: /** Notification payload - JSON in string **/,
@@ -105,7 +108,7 @@ lola.send(
   completion: /** Your completion block **/
 )?.resume()
 ```
-od for simple message
+... or just a simple message:
 ```
 lola.send(
   message: /** Notification message - notification description **/,
