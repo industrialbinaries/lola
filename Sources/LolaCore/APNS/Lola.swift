@@ -31,20 +31,15 @@ public struct Lola {
   ///   - payload: JSON for APNs for more information check https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification
   ///   - type: Define type of notification - for more information check `PushNotificationType`
   ///   - completion: Completion of request result
+  @discardableResult
   public func send(
     payload: String,
     type: PushNotificationType = .alert,
     completion: @escaping (Result<URLResponse, APNSError>) -> Void
   ) -> URLSessionDataTask? {
-    var request: URLRequest
-    do {
-      request = try setupRequest(data: payload, type: type)
-    } catch {
-      completion(.failure(.invalidRequest(error)))
-      return nil
-    }
+    let request = setupRequest(data: payload, type: type)
 
-    return session.dataTask(
+    let task = session.dataTask(
       with: request
     ) { data, response, error in
       // Check error
@@ -62,12 +57,15 @@ public struct Lola {
 
       completion(.success(httpResponse))
     }
+    task.resume()
+    return task
   }
 
   /// Send `message` in default alert to APNs server
   /// - Parameters:
   ///   - message: Simple string for APNs
   ///   - completion: Completion of request result
+  @discardableResult
   public func send(
     message: String,
     completion: @escaping (Result<URLResponse, APNSError>) -> Void
@@ -83,8 +81,8 @@ public struct Lola {
   private func setupRequest(
     data: String,
     type: PushNotificationType
-  ) throws -> URLRequest {
-    let url = try server.url(for: configuration.deviceToken)
+  ) -> URLRequest {
+    let url = server.url(for: configuration.deviceToken)
     var request = URLRequest(url: url)
     // Setup HTTP method
     request.httpMethod = "POST"

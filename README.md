@@ -88,7 +88,6 @@ let parser = try P8Parser(
 let authorizationToken = try parser.generateToken()
 ```
 
-
 2. Create a new instance of  `Lola`:
 ```swift
 let configuration = AppConfiguration(
@@ -106,14 +105,14 @@ lola.send(
   payload: /** Notification payload - JSON in string **/,
   type: /** Notification type **/,
   completion: /** Your completion block **/
-)?.resume()
+)
 ```
 ... or just a simple message:
 ```swift
 lola.send(
   message: /** Notification message - notification description **/,
   completion: /** Your completion block **/
-)?.resume()
+)
 ```
 
 ## License and Credits

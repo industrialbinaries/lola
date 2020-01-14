@@ -79,7 +79,7 @@ if let message = commands["-message"] {
   lola.send(
     message: message,
     completion: completion
-  )?.resume()
+  )
 } else if let payload = commands["-json"] {
   var type: PushNotificationType = .alert
 
@@ -92,7 +92,7 @@ if let message = commands["-message"] {
     payload: payload,
     type: type,
     completion: completion
-  )?.resume()
+  )
 } else {
   print("Missing required argument `-message` or `-json`")
   exit(-1)

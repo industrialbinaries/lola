@@ -13,10 +13,8 @@ public enum APNSServer {
 
   /// URL for send push notification
   /// - Parameter deviceToken: Token for device where will send notification, you can get this token when your app register for remote push notification for more information check https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application
-  func url(for deviceToken: String) throws -> URL {
-    guard let url = URL(string: "https://\(baseURL):\(port)") else {
-      throw APNSError.invalidURL
-    }
+  func url(for deviceToken: String) -> URL {
+    let url = URL(string: "https://\(baseURL):\(port)")!
     return url.appendingPathComponent("/3/device/\(deviceToken)")
   }
 
