@@ -65,9 +65,9 @@ let dispatchGroup = DispatchGroup()
 let completion = { (result: Result<URLResponse, APNSError>) in
   switch result {
   case .success:
-    print("Notification sent successfully 🎉")
+    print("\nNotification sent successfully 🎉")
   case let .failure(error):
-    print("Error: \(error.localizedDescription)")
+    print("\nError: \(error.localizedDescription)")
   }
 
   dispatchGroup.leave()
