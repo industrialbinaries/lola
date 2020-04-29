@@ -51,7 +51,7 @@ public struct Lola {
       guard
         let httpResponse = response as? HTTPURLResponse,
         httpResponse.statusCode == 200 else {
-        completion(.failure(.invalidResponse(response)))
+        completion(.failure(.invalidResponse(response, data)))
         return
       }
 
