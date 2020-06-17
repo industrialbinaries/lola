@@ -88,6 +88,9 @@ public struct Lola {
     request.httpMethod = "POST"
     // Add headers
     request.addValue(type.rawValue, forHTTPHeaderField: "apns-push-type")
+    if type == .background {
+      request.addValue("5", forHTTPHeaderField: "apns-priority")
+    }
     request.addValue("bearer \(configuration.authorizationToken)", forHTTPHeaderField: "authorization")
     request.addValue(configuration.bundleId, forHTTPHeaderField: "apns-topic")
     // Setup body
